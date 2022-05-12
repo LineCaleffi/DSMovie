@@ -1,0 +1,21 @@
+/* google fontes */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap'); 
+
+:root {
+  --color-primary: #4D41C0; 
+}
+
+* {
+    /* Border-box: espaçamento interno de um componente e a borda não ocupem espaço a mais do que foio definido */ 
+    box-sizing: border-box; 
+    font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+    background-color: #E5E5E5; /* cor do fundo */
+}
+
+a, a:hover {
+  text-decoration: none; 
+  color: unset;
+}
