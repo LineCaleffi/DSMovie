@@ -26,7 +26,7 @@ header {
 }
 
 .dsmovie-contact-link {
-    /* topo, direita, em baixo, esquerda do nome */
+    /* 0,0,0,10 << topo, direita, em baixo, esquerda do nome >>*/
     margin: 0 0 0 10px; /* 0 - tira a margem, 10px - acrescenta uma margem a esquerda */
     font-size: 12px;
 }
