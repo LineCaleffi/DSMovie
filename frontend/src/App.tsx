@@ -9,9 +9,9 @@ function App() {
     // que teremos um roteamento de componentes
     <BrowserRouter>
       <Navbar />
-      {/* Routes: componente que associa a rota ao componente.
-          Nele temos três parâmetros: component, path e exact.*/}
       <Routes>
+         {/* Routes: componente que associa a rota ao componente.
+          Nele temos três parâmetros: component, path e exact.*/}
         <Route path="/" element={<Listing />} />
         <Route path="/form">
           <Route path=":movieId" element={<Form />} />
@@ -22,3 +22,7 @@ function App() {
 }
 
 export default App;
+
+/* 
+  React.JS: Criando rotas com React Router Dom ---> devmedia
+*/
