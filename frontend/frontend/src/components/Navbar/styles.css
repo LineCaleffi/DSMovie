@@ -1,0 +1,32 @@
+
+/* Cabeçalho */
+header {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    background-color: var(--color-primary); /* pega a cor definida no index.css */
+}
+
+.dsmovie-nav-content {
+    display: flex; /* fica um elemento do lado do outro*/
+    justify-content: space-between; /* para ter a mesma quantidade de espaço entre cada elemento
+                                        neste caso: fica um em cada ponta da página */
+    align-items: center;
+}
+
+.dsmovie-nav-content h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.dsmovie-contact-container{
+    display: flex; /* fica um elemento do lado do outro*/
+    align-items: center;
+}
+
+.dsmovie-contact-link {
+    /* 0,0,0,10 << topo, direita, em baixo, esquerda do nome >>*/
+    margin: 0 0 0 10px; /* 0 - tira a margem, 10px - acrescenta uma margem a esquerda */
+    font-size: 12px;
+}
