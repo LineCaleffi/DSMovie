@@ -1,14 +1,27 @@
 import axios from "axios";
 import MovieCard from "components/MovieCard";
 import Pagination from "components/Pagination";
+import { useEffect, useState } from "react";
+import { MoviePage } from "types/movie";
 import { BASE_URL } from "utils/requests";
 
 function Listing(){
-    // FORMA ERRADA - TESTE
-    axios.get(`${BASE_URL}/movies`).then(response => {  console.log(response.data);  });
+    const [pageNumber, setPageNumber] = useState(0); //react
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/movies?size=12&page=1`)
+            .then(response => {
+                const data = response.data as MoviePage;
+                console.log(data);
+                setPageNumber(data.number);
+            });
+    }, []);
 
     return(
-        <><Pagination></Pagination>
+        
+        <>
+        <p>{pageNumber}</p> 
+        <Pagination></Pagination>
         {/*
             aparece vários na mesma tela, um do lado do outro, tipo tabela 
             controle de ajuste conforme a tela se "movimenta"
