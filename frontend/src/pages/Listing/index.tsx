@@ -24,7 +24,7 @@ function Listing(){
     // Pense em efeitos como um rota de fuga do mundo puramente funcional do React para o mundo imperativo.
     
     useEffect(() => {
-        axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber}&sort=title`) // &sort=title -> organiza em ordem alfabetica por titulo
+        axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber}&sort=id`) // &sort=title -> organiza em ordem alfabetica por titulo
             .then(response => {
                 const data = response.data as MoviePage;
                 setPage(data);
