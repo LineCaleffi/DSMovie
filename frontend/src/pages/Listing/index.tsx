@@ -6,7 +6,7 @@ import { MoviePage } from "types/movie";
 import { BASE_URL } from "utils/requests";
 
 function Listing(){
-    const [pageNumber] = useState(0); //react
+    const [pageNumber, setPageNumber] = useState(0); //react
 
     const[page, setPage] = useState<MoviePage>({
         content: [],
@@ -31,10 +31,14 @@ function Listing(){
             });
     }, [pageNumber]);
 
+    const handlePageChange = (newPageNumber : number) => {
+        setPageNumber(newPageNumber);
+    }
+
     return(
         
         <>
-        <Pagination></Pagination>
+         <Pagination page={page} onChange={handlePageChange} />
         {/*
             aparece TODOS os filmes salvos no banco de dados ( 12 por página)
         */}
