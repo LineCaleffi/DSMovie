@@ -8,43 +8,44 @@ import { BASE_URL } from "utils/requests";
 function Listing(){
     const [pageNumber, setPageNumber] = useState(0); //react
 
+    const[page, setPage] = useState<MoviePage>({
+        content: [],
+        last: true,
+        totalPages: 0,
+        totalElements: 0,
+        size: 12, // deixa apenas 12 elementos por página
+        number: 0,
+        first: true,
+        numberOfElements: 0,
+        empty: true
+    });
+
+    // useEffect() -> a função será executada depois que a renderização estiver disponível na tela. 
+    // Pense em efeitos como um rota de fuga do mundo puramente funcional do React para o mundo imperativo.
+    
     useEffect(() => {
-        axios.get(`${BASE_URL}/movies?size=12&page=1`)
+        axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber}&sort=title`) // &sort=title -> organiza em ordem alfabetica por titulo
             .then(response => {
                 const data = response.data as MoviePage;
-                console.log(data);
-                setPageNumber(data.number);
+                setPage(data);
             });
-    }, []);
+    }, [pageNumber]);
 
     return(
         
         <>
-        <p>{pageNumber}</p> 
         <Pagination></Pagination>
         {/*
-            aparece vários na mesma tela, um do lado do outro, tipo tabela 
-            controle de ajuste conforme a tela se "movimenta"
-            mb-3 -> espaço entre os cards
+            aparece TODOS os filmes salvos no banco de dados ( 12 por página)
         */}
         <div className="container">
             <div className="row"> {/*linha */}
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">{/*coluna 1 */}
-                <MovieCard></MovieCard>
-                </div>
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">{/*coluna 1 */}
-                <MovieCard></MovieCard>
-                </div>
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3 ">{/*coluna 1 */}
-                <MovieCard></MovieCard>
-                </div>
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">{/*coluna 1 */}
-                <MovieCard></MovieCard>
-                </div>
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">{/*coluna 1 */}
-                <MovieCard></MovieCard>
-                </div>
-               
+                {page.content.map(movie =>(
+                    //em uma renderização dinâmica de coleção, cada elemento renderizado DEVE possuir um atributo key (atributo unico )
+                    <div key={movie.id} className="col-sm-6 col-lg-4 col-xl-3">
+                        <MovieCard movie={movie}></MovieCard>
+                    </div>
+                ))}
             </div>
         </div>
 
